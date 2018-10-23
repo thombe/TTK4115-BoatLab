@@ -1,0 +1,16 @@
+window = 4096;
+x = psi_w(2,:)*pi/180;
+fs = 10;
+[pxx,f] = pwelch(x,window, [], [], fs);
+pxx=pxx./(2*pi);
+f=f.*2*pi;
+%plot(f, pxx)
+
+omega_0 = 0.7823; % Peak frequency
+pxx_peak = 0.0007919; % Value at omega_0
+sigma = sqrt(pxx_peak);
+
+lambda = 1; % Trial and error
+K_f = 2*lambda*omega_0*sigma;
+
+P_psi = 
