@@ -1,3 +1,5 @@
+
+
 H1 = 58.71/2;
 H2 = 1.676/2;
 w1 = 0.005; %rad/s
@@ -10,7 +12,12 @@ sigma = sqrt(pxx_peak);
 
 w0 = 0.7823; % Peak frequency
 lambda = 0.2; % Trial and error
-Kw = 2*lambda*omega_0*sigma;
+Kw = 2*lambda*w0*sigma;
+
+T_d = T; 
+K_pd = 0.841;
+T_f = 8.35;
+
 
 
     %e      psi_w       psi     r       b
@@ -35,10 +42,37 @@ E = [0  0;
 C = [0 1 1 0 0];
 D = [0];
 
-T = 0.1;
+T_s = 0.1;
 [~, Bd] = c2d(A,B,T);
 [Ad, Ed] = c2d(A,E,T);
+Cd = C;
+Dd = D;
 
 sim('ship');
-variance = var(mn);
-%adding comment
+variance = var(mn*pi/180);
+figure(1)
+hold on;
+histogram(mn.Data);
+tsdatasize = getdatasamplesize(mn);
+plot(x,norm*21);
+
+
+R = variance/T_s;
+
+Q = [30 0;
+    0 10^-6];
+
+P_0 = [1    0      0    0   0;
+       0    0.013  0    0   0;
+       0    0      pi^2 0   0;
+       0    0      0    1   0;
+       0    0      0    0   2.5*10^-4];
+   
+x_0 = [zeros(10,1);P_0(:)];
+I = eye(5);
+       
+
+data = struct('Ad',Ad,'Bd',Bd,'Cd',Cd,'Ed', Ed, 'Q',Q,'R', R,'P_0',P_0,'x_0',x_0, 'I', I);
+          
+
+
