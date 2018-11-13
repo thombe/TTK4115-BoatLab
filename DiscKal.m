@@ -29,26 +29,22 @@ end
 
 function [sys,x0,str,ts]=mdlInitializeSizes(data)   
 
-    sizes = simsizes; % do not modify
+    sizes = simsizes;
 
-    sizes.NumContStates  = 0; % Number of continuous states in the system, do not modify
-    sizes.NumDiscStates  = 35; % Number of discrete states in the system, modify. 
-    sizes.NumOutputs     = 2; % Number of outputs, the hint states 2
-    sizes.NumInputs      = 2; % Number of inputs, the hint states 2
-    sizes.DirFeedthrough = 1; % 1 if the input is needed directly in the
-                              % update part
-    sizes.NumSampleTimes = 1; % Do not modify  
+    sizes.NumContStates  = 0;
+    sizes.NumDiscStates  = 35;
+    sizes.NumOutputs     = 2;
+    sizes.NumInputs      = 2;
+    sizes.DirFeedthrough = 1;                             
+    sizes.NumSampleTimes = 1;
 
-    sys = simsizes(sizes); % Do not modify  
+    sys = simsizes(sizes);
 
-    x0  = data.x_0; % Initial values for the discrete states, modify
+    x0  = data.x_0;
 
-    str = []; % Do not modify
+    str = [];
 
-    ts  = [-1 0]; % Sample time. [-1 0] means that sampling is
-    % inherited from the driving block and that it changes during
-    % minor steps.
-
+    ts  = [-1 0]; % Sample time.
 end
 
 function sys=mdlUpdate(t,x,u,data)
