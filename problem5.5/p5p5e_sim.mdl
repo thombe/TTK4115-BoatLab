@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.56"
+    ComputedModelVersion    "1.57"
     NumModelReferences	    0
     NumTestPointedSignals   0
     NumProvidedFunctions    0
@@ -66,11 +66,11 @@ Model {
 	Object {
 	  $ObjectID		  5
 	  IsActive		  [1]
-	  ViewObjType		  "SimulinkTopLevel"
-	  LoadSaveID		  "0"
+	  ViewObjType		  "SimulinkSubsys"
+	  LoadSaveID		  "44"
 	  Extents		  [920.0, 863.0]
-	  ZoomFactor		  [1.263777740882174]
-	  Offset		  [-172.04664728139011, -3.9366197799887459]
+	  ZoomFactor		  [0.8]
+	  Offset		  [0.0, 0.0]
 	}
 	Object {
 	  $ObjectID		  6
@@ -115,9 +115,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "thobern"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Tue Nov 13 14:32:46 2018"
-  RTWModifiedTimeStamp	  464020283
-  ModelVersionFormat	  "1.%<AutoIncrement:56>"
+  LastModifiedDate	  "Tue Nov 13 15:31:10 2018"
+  RTWModifiedTimeStamp	  464023859
+  ModelVersionFormat	  "1.%<AutoIncrement:57>"
   ConfigurationManager	  "none"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -1164,7 +1164,7 @@ Model {
   System {
     Name		    "p5p5e_sim"
     Location		    [951, 2, 1925, 1049]
-    Open		    on
+    Open		    off
     PortBlocksUseCompactNotation off
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
@@ -1783,7 +1783,7 @@ Model {
       Name		      "Kalman filter"
       SID		      "69"
       Ports		      [2, 2]
-      Position		      [120, 307, 280, 413]
+      Position		      [120, 309, 280, 416]
       ZOrder		      36
       BlockMirror	      on
       BackgroundColor	      "yellow"
@@ -1820,7 +1820,7 @@ Model {
 	  BlockType		  Inport
 	  Name			  "Compass [deg]"
 	  SID			  "70"
-	  Position		  [534, 270, 564, 285]
+	  Position		  [535, 270, 565, 285]
 	  ZOrder		  34
 	  BlockRotation		  270
 	  BlockMirror		  on
@@ -2100,7 +2100,7 @@ Model {
       System {
 	Name			"Pd reg\n"
 	Location		[951, 2, 1925, 1049]
-	Open			off
+	Open			on
 	PortBlocksUseCompactNotation off
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
