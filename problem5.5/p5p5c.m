@@ -43,8 +43,8 @@ C = [0 1 1 0 0];
 D = [0];
 
 T_s = 0.1;
-[~, Bd] = c2d(A,B,T);
-[Ad, Ed] = c2d(A,E,T);
+[~, Bd] = c2d(A,B,T_s);
+[Ad, Ed] = c2d(A,E,T_s);
 Cd = C;
 Dd = D;
 
