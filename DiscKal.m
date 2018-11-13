@@ -1,47 +1,33 @@
 function [sys,x0,str,ts] = DiscKal(t,x,u,flag,data)
-    % Shell for the discrete kalman filter assignment in
-    % TTK4115 Linear Systems.
-    %
-    % Author: Jørgen Spjøtvold
-    % 19/10-2003 
-    %
+    % Shell for the discrete kalman filter made by Jørgen Spjøtvold
 
   switch flag
 
-  %%%%%%%%%%%%%%%%%%
   % Initialization %
-  %%%%%%%%%%%%%%%%%%
-  case 0,
-    [sys,x0,str,ts]=mdlInitializeSizes(data);%mdlInitializeSizes(data); if method 2 is used
+  case 0
+    [sys,x0,str,ts]=mdlInitializeSizes(data);
 
-  %%%%%%%%%%%%%
-  % Outputs   %
-  %%%%%%%%%%%%%
-  
-  case 3,
-    sys=mdlOutputs(t,x,u,data); % mdlOutputs(t,x,u,data) if mathod 2 is used
-  %%%%%%%%%%%%%
-  % Terminate %
-  %%%%%%%%%%%%%
-  
-  case 2,
-    sys=mdlUpdate(t,x,u,data); %mdlUpdate(t,x,u, data); if method 2 is used
+  % Outputs   %  
+  case 3
+    sys=mdlOutputs(t,x,u,data);
+    
+  % Terminate %  
+  case 2
+    sys=mdlUpdate(t,x,u,data);
   
   case {1,4,}
     sys=[];
 
-  case 9,
+  case 9
       sys=mdlTerminate(t,x,u);
-  %%%%%%%%%%%%%%%%%%%%
+  
   % Unexpected flags %
-  %%%%%%%%%%%%%%%%%%%%
   otherwise
     error(['Unhandled flag = ',num2str(flag)]);
   end
 end
 
-function [sys,x0,str,ts]=mdlInitializeSizes(data) %mdlInitializeSizes(data); if method 2 is used
-    % This is called only at the start of the simulation. 
+function [sys,x0,str,ts]=mdlInitializeSizes(data)   
 
     sizes = simsizes; % do not modify
 
@@ -65,12 +51,7 @@ function [sys,x0,str,ts]=mdlInitializeSizes(data) %mdlInitializeSizes(data); if 
 
 end
 
-function sys=mdlUpdate(t,x,u,data)%mdlUpdate(t,x,u, data); if method 2 is used
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Update the filter covariance matrix and state etsimates here.
-% example: sys=x+u(1), means that the state vector after
-% the update equals the previous state vector + input nr one.
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+function sys=mdlUpdate(t,x,u,data)
     I = eye(5);
     
     P_pri = reshape(x(11:35),5,5);
@@ -91,13 +72,8 @@ function sys=mdlUpdate(t,x,u,data)%mdlUpdate(t,x,u, data); if method 2 is used
     x = sys;
 end
 
-function sys=mdlOutputs(t,x,u, data)% mdlOutputs(t,x,u,data) if mathod 2 is used
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Calculate the outputs here
-% example: sys=x(1)+u(2), means that the output is the first state+
-% the second input. 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    sys=[x(8); x(10)];
+function sys=mdlOutputs(t,x,u, data)
+    sys=[x(8); x(10)]; % psi, b
 end
 
 function sys=mdlTerminate(t,x,u) 
