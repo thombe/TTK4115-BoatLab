@@ -11,12 +11,12 @@ pxx_peak = 0.0007919; % Value at omega_0
 sigma = sqrt(pxx_peak);
 
 w0 = 0.7823; % Peak frequency
-lambda = 0.2; % Trial and error 
+lambda = 0.09; % Trial and error 
 Kw = 2*lambda*w0*sigma;
 
 T_d = T; 
 K_pd = 0.841;   %0.841;
-T_f = 8.35;
+T_f = 8.35;     %8.35
 
 
 
@@ -59,14 +59,16 @@ P_0 = [1    0      0    0   0;
        0    0.013  0    0   0;
        0    0      pi^2 0   0;
        0    0      0    1   0;
-       0    0      0    0   2.5*10^-4];
+       0    0      0    0   2.5*10^-3];
 x_0 = [zeros(10,1);P_0(:)];
 I = eye(5);
        
 
 data = struct('Ad',Ad,'Bd',Bd,'Cd',Cd,'Ed', Ed, 'Q',Q,'R', R,'P_0',P_0,'x_0',x_0, 'I', I);
-          
+
+
 figure(1)
+clf;
 sim('p5p5e_sim');
 hold on;
 plot(heading, 'Red');

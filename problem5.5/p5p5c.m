@@ -11,7 +11,7 @@ pxx_peak = 0.0007919; % Value at omega_0
 sigma = sqrt(pxx_peak);
 
 w0 = 0.7823; % Peak frequency
-lambda = 0.2; % Trial and error
+lambda = 0.09; % Trial and error
 Kw = 2*lambda*w0*sigma;
 
 T_d = T; 

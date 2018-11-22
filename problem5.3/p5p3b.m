@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 % From part 1
 H1 = 58.71/2;
 H2 = 1.676/2;
@@ -8,75 +7,33 @@ w2 = 0.05;  %rad/s
 T = sqrt((H2^2*w2^2 - H1^2*w1^2) / (H1^2*w1^4 - H2^2*w2^4));
 K = H1*w1*sqrt(T^2*w1^2 + 1);
 
-
-
 s = tf('s'); 
 T_d = T; 
-K_pd = 0.841;
-T_f = 8.35;
-%H_ship = K/(s*(T*s+1));
-%H_pd = K_pd*(1+T_d*s)/(1+T_f*s); 
+K_pd = 0.839;
+T_f = 8.4;
+
 H_t = K_pd/(1+T_f*s);
 H_pi = K/s;
 
-%H = H_ship*H_pd;
-%figure(1)
-%margin(H_pi);
-%figure(2)
-%margin(H_t);
-%figure(3)
-%margin(H_pi * H_t);
 
 psi_r = 30;
-sim('problem5.3\p5p3b_sim.mdl');
+sim('problem5.3\p5p3b_sim.mdl','StartTime','0','StopTime','500');
 
 
 figure(1)
 
-ref = 30.*ones(length(heading.Time),1);
-plot(heading.Time,heading.Data,'LineWidth',1.2);
-
-title('Rudder input, PD controller with current disturbance');
-legend('$\delta$','$\delta$') % Up rigth corner legends
-handles(1) = xlabel('Time'); % xLabel
-handles(2) = ylabel('Rudder angle'); %yLabel
-set(legend, 'Interpreter' , 'Latex');
-set(legend, 'FontSize' , 20);
-set(handles, 'Interpreter' , 'Latex'); % Making them in latex
-set(handles, 'Fontsize' , 20); % Fontsize
-=======
-s = tf('s'); 
-T_d = T; 
-K_pd = 0.841;
-T_f = 8.35;
-%H_ship = K/(s*(T*s+1));
-%H_pd = K_pd*(1+T_d*s)/(1+T_f*s); 
-H_t = K_pd/(1+T_f*s);
-H_pi = K/s;
-
-%H = H_ship*H_pd;
-%figure(1)
-%margin(H_pi);
-%figure(2)
-%margin(H_t);
-%figure(3)
-%margin(H_pi * H_t);
-
-psi_r = 30;
-
-
-figure(1)
-
-ref = 30.*ones(length(heading.Time),1);
+ref = psi_r.*ones(length(heading.Time),1);
 plot(rudder.Time,rudder.Data,'LineWidth',1.2);
 
-title('Rudder input, PD controller with current disturbance');
-legend('$\delta$','$\delta$') % Up rigth corner legends
+title('Rudder input, PD controller with measurement noise');
+legend('$\delta$','$\psi_r$') % Up rigth corner legends
 handles(1) = xlabel('Time'); % xLabel
-handles(2) = ylabel('Rudder angle'); %yLabel
+handles(2) = ylabel('Rudder input'); %yLabel
 set(legend, 'Interpreter' , 'Latex');
 set(legend, 'FontSize' , 20);
 set(handles, 'Interpreter' , 'Latex'); % Making them in latex
 set(handles, 'Fontsize' , 20); % Fontsize
->>>>>>> b657cbfc84bf83877e4e5356fb534290455ab7aa
-%set(get(gca,'ylabel'),'rotation',0) % % Rotates text on ylabel
+
+set(gcf, 'PaperPositionMode', 'auto');
+print -depsc2 P5p3b_rudder.eps %Sets the filename for export
+%close;

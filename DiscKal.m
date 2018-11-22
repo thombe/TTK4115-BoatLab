@@ -35,7 +35,7 @@ function [sys,x0,str,ts]=mdlInitializeSizes(data)
     sizes.NumDiscStates  = 35;
     sizes.NumOutputs     = 2;
     sizes.NumInputs      = 2;
-    sizes.DirFeedthrough = 1;                             
+    sizes.DirFeedthrough = 0;                             
     sizes.NumSampleTimes = 1;
 
     sys = simsizes(sizes);
@@ -47,12 +47,12 @@ function [sys,x0,str,ts]=mdlInitializeSizes(data)
     ts  = [-1 0]; % Sample time.
 end
 
-function sys=mdlUpdate(t,x,u,data)
+function x=mdlUpdate(t,x,u,data)
     I = eye(5);
     
     P_pri = reshape(x(11:35),5,5);
     
-    L = P_pri*(data.Cd)'*inv((data.Cd*P_pri*(data.Cd)'+data.R));
+    L = P_pri*(data.Cd)'*(data.Cd*P_pri*(data.Cd)'+data.R)^-1;
     
     x_pri = x(1:5);
     
@@ -64,8 +64,11 @@ function sys=mdlUpdate(t,x,u,data)
     
     P_next = data.Ad*P_post*(data.Ad)' + data.Ed*data.Q*(data.Ed)';
     
-    sys=[x_next; x_post; P_next(:)];
-    x = sys;
+    x(1:5) = x_next;
+    x(6:10) = x_post;
+    x(11:35) = P_next;
+    %sys=[x_next; x_post; P_next(:)];
+    %x = sys;
 end
 
 function sys=mdlOutputs(t,x,u, data)
