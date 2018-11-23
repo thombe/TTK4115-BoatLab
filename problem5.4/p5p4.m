@@ -40,7 +40,7 @@ sys = ss(A,B,C,D);
 disp(rank(obsv(A, C)) == length(A));
 
 %Without disturbances
-Anone = [0 1; -1/T 0];
+Anone = [0 1; 0 -1/T];
 Cnone = [1 0];
 disp(rank(obsv(Anone, Cnone)) == length(Anone));
 

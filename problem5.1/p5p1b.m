@@ -1,12 +1,3 @@
-<<<<<<< HEAD
-%constants
-w0 = 1;
-lambda = 1;
-%K = 1;
-%T = 5;
-Kw = 1;
-%syms w0 lambda T K Kw;
-
 H1 = 58.71/2;
 H2 = 1.676/2;
 w1 = 0.005; %rad/s
@@ -15,95 +6,21 @@ w2 = 0.05;  %rad/s
 T = sqrt((H2^2*w2^2 - H1^2*w1^2) / (H1^2*w1^4 - H2^2*w2^4));
 K = H1*w1*sqrt(T^2*w1^2 + 1);
 
-A = [0      1           0       0       0;
-    -w0*w0  2*lambda*w0 0       0       0;
-    0       0           0       1       0;
-    0       0           0      -1/T     K/T;
-    0       0           0       0       0];
 
-B = [0;
-    0;
-    0;
-    K/T;
-    0];
+figure(1)
 
-E = [0  0;
-    Kw  0;
-    0   0;
-    0   0;
-    0   1];
+plot(heading_05.Time,heading_05.Data,'LineWidth',1.2);
+grid on;
 
-C = [0 1 0 0 0;
-     0 0 1 0 0];
+title('Compass course, no disturbance');
+legend('$\psi$','$\psi_r$') % Up rigth corner legends
+handles(1) = xlabel('Time'); % xLabel
+handles(2) = ylabel('Compass course'); %yLabel
+set(legend, 'Interpreter' , 'Latex');
+set(legend, 'FontSize' , 14);
+set(handles, 'Interpreter' , 'Latex'); % Making them in latex
+set(handles, 'Fontsize' , 14); % Fontsize
 
-D = [0;
-    0];
-
-
-
-
-sys = ss(A,B,C,D);
-
-h = tf(sys);
-
-%[u,t] = gensig('sine',10,10,0.01);
-%lsim(h,u,t);
-
-
-
-
-=======
-%constants
-w0 = 1;
-lambda = 1;
-%K = 1;
-%T = 5;
-Kw = 1;
-%syms w0 lambda T K Kw;
-
-H1 = 58.71/2;
-H2 = 1.676/2;
-w1 = 0.005; %rad/s
-w2 = 0.05;  %rad/s
-
-T = sqrt((H2^2*w2^2 - H1^2*w1^2) / (H1^2*w1^4 - H2^2*w2^4));
-K = H1*w1*sqrt(T^2*w1^2 + 1);
-
-A = [0      1           0       0       0;
-    -w0*w0  2*lambda*w0 0       0       0;
-    0       0           0       1       0;
-    0       0           0      -1/T     K/T;
-    0       0           0       0       0];
-
-B = [0;
-    0;
-    0;
-    K/T;
-    0];
-
-E = [0  0;
-    Kw  0;
-    0   0;
-    0   0;
-    0   1];
-
-C = [0 1 0 0 0;
-     0 0 1 0 0];
-
-D = [0;
-    0];
-
-
-
-
-sys = ss(A,B,C,D);
-
-h = tf(sys);
-
-%[u,t] = gensig('sine',10,10,0.01);
-%lsim(h,u,t);
-
-
-
-
->>>>>>> b657cbfc84bf83877e4e5356fb534290455ab7aa
+set(gcf, 'PaperPositionMode', 'auto');
+print -depsc2 P5p1b_heading_005.eps %Sets the filename for export
+%close;

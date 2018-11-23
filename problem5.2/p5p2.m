@@ -1,3 +1,4 @@
+load('wave.mat')
 window = 4096;
 x = psi_w(2,:)*pi/180;
 fs = 10;
@@ -27,14 +28,16 @@ len = 120;
 plot(f(1:len), pxx(1:len),'LineWidth',1.2);
 
 legend('$S_{\psi_\omega}$','$P_{\psi_\omega}$') % Up rigth corner legends
-handles(1) = xlabel('Frequency [Hz]'); % xLabel
+handles(1) = xlabel('Frequency [Rad/s]'); % xLabel
 handles(2) = ylabel('Power Density [J/Rad]'); %yLabel
 set(legend, 'Interpreter' , 'Latex');
-set(legend, 'FontSize' , 20);
+set(legend, 'FontSize' , 14);
 set(handles, 'Interpreter' , 'Latex'); % Making them in latex
-set(handles, 'Fontsize' , 20); % Fontsize
+set(handles, 'Fontsize' , 14); % Fontsize
 %set(get(gca,'ylabel'),'rotation',0) % % Rotates text on ylabel
 
+set(gcf, 'PaperPositionMode', 'auto');
+print -depsc2 P5p2a_PSD.eps %Sets the filename for export
 
 
 

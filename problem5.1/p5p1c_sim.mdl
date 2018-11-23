@@ -1,12 +1,12 @@
 Model {
-  Name			  "p5p1c"
+  Name			  "p5p1c_sim"
   Version		  8.9
   SavedCharacterEncoding  "windows-1252"
   GraphicalInterface {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.24"
+    ComputedModelVersion    "1.27"
     NumModelReferences	    0
     NumTestPointedSignals   0
     NumProvidedFunctions    0
@@ -103,9 +103,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "thobern"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Tue Oct 23 09:34:34 2018"
-  RTWModifiedTimeStamp	  462187894
-  ModelVersionFormat	  "1.%<AutoIncrement:24>"
+  LastModifiedDate	  "Fri Nov 23 09:47:09 2018"
+  RTWModifiedTimeStamp	  464866149
+  ModelVersionFormat	  "1.%<AutoIncrement:27>"
   ConfigurationManager	  "none"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -157,11 +157,11 @@ Model {
     $PropName		    "DataLoggingOverride"
     $ObjectID		    7
     $ClassName		    "Simulink.SimulationData.ModelLoggingInfo"
-    model_		    "p5p1c"
+    model_		    "p5p1c_sim"
     Array {
       Type		      "Cell"
       Dimension		      1
-      Cell		      "p5p1c"
+      Cell		      "p5p1c_sim"
       PropName		      "logAsSpecifiedByModels_"
     }
     Array {
@@ -212,7 +212,7 @@ Model {
 	  DisabledProps		  []
 	  Description		  ""
 	  StartTime		  "0.0"
-	  StopTime		  "1000"
+	  StopTime		  "5000"
 	  AbsTol		  "auto"
 	  FixedStep		  "auto"
 	  InitialStep		  "auto"
@@ -1137,7 +1137,7 @@ Model {
     }
   }
   System {
-    Name		    "p5p1c"
+    Name		    "p5p1c_sim"
     Location		    [953, 0, 1927, 527]
     Open		    on
     PortBlocksUseCompactNotation off
@@ -1714,23 +1714,26 @@ Model {
       ZOrder		      -3
       ScopeSpecificationString "Simulink.scopes.TimeScopeBlockCfg('CurrentConfiguration', extmgr.ConfigurationSet(extm"
       "gr.Configuration('Core','General UI',true),extmgr.Configuration('Core','Source UI',true),extmgr.Configuration('S"
-      "ources','WiredSimulink',true,'DataLoggingSaveFormat','StructureWithTime','DataLoggingLimitDataPoints',true,'Data"
-      "LoggingDecimation','1','DataLoggingDecimateData',true),extmgr.Configuration('Visuals','Time Domain',true,'Serial"
-      "izedDisplays',{struct('MinYLimReal','-7.9174','MaxYLimReal','71.25657','YLabelReal','','MinYLimMag','0.00000','M"
-      "axYLimMag','71.25657','LegendVisibility','off','XGrid',true,'YGrid',true,'PlotMagPhase',false,'AxesColor',[0 0 0"
-      "],'AxesTickColor',[0.686274509803922 0.686274509803922 0.686274509803922],'ColorOrder',[1 1 0.0666666666666667;0"
-      ".0745098039215686 0.623529411764706 1;1 0.411764705882353 0.16078431372549;0.392156862745098 0.831372549019608 0"
-      ".0745098039215686;0.717647058823529 0.274509803921569 1;0.0588235294117647 1 1;1 0.0745098039215686 0.6509803921"
-      "56863],'Title','%<SignalLabel>','LinePropertiesCache',{{}},'UserDefinedChannelNames',{{}},'NumLines',1,'LineName"
-      "s',{{'Cargo ship/1'}},'ShowContent',true,'Placement',1)},'DisplayPropertyDefaults',struct('MinYLimReal','-7.9174"
-      "','MaxYLimReal','71.25657','YLabelReal','','MinYLimMag','0.00000','MaxYLimMag','71.25657','LegendVisibility','of"
-      "f','XGrid',true,'YGrid',true,'PlotMagPhase',false,'AxesColor',[0 0 0],'AxesTickColor',[0.686274509803922 0.68627"
-      "4509803922 0.686274509803922],'ColorOrder',[1 1 0.0666666666666667;0.0745098039215686 0.623529411764706 1;1 0.41"
-      "1764705882353 0.16078431372549;0.392156862745098 0.831372549019608 0.0745098039215686;0.717647058823529 0.274509"
-      "803921569 1;0.0588235294117647 1 1;1 0.0745098039215686 0.650980392156863],'Title','%<SignalLabel>','LinePropert"
-      "iesCache',{{}},'UserDefinedChannelNames',{{}},'NumLines',0,'LineNames',{{[]}},'ShowContent',true,'Placement',1))"
-      ",extmgr.Configuration('Tools','Plot Navigation',true,'OnceAtStop',false,'PreviousZoomMode','ZoomX'),extmgr.Confi"
-      "guration('Tools','Measurements',true,'Version','2017a')),'Version','2017a','Location',[1 76 1921 1039])"
+      "ources','WiredSimulink',true,'DataLoggingSaveFormat','StructureWithTime','DataLoggingDecimation','1','DataLoggin"
+      "gDecimateData',true),extmgr.Configuration('Visuals','Time Domain',true,'SerializedDisplays',{struct('MinYLimReal"
+      "','-9.73733','MaxYLimReal','73.33829','YLabelReal','','MinYLimMag','0.00000','MaxYLimMag','73.33829','LegendVisi"
+      "bility','Off','XGrid',true,'YGrid',true,'PlotMagPhase',false,'AxesColor',[0 0 0],'AxesTickColor',[0.686274509803"
+      "922 0.686274509803922 0.686274509803922],'ColorOrder',[1 1 0.0666666666666667;0.0745098039215686 0.6235294117647"
+      "06 1;1 0.411764705882353 0.16078431372549;0.392156862745098 0.831372549019608 0.0745098039215686;0.7176470588235"
+      "29 0.274509803921569 1;0.0588235294117647 1 1;1 0.0745098039215686 0.650980392156863],'Title','%<SignalLabel>','"
+      "LinePropertiesCache',{{}},'UserDefinedChannelNames',{{}},'NumLines',1,'LineNames',{{'Cargo ship/1'}},'ShowConten"
+      "t',true,'Placement',1)},'DisplayPropertyDefaults',struct('MinYLimReal','-9.73733','MaxYLimReal','73.33829','YLab"
+      "elReal','','MinYLimMag','0.00000','MaxYLimMag','73.33829','LegendVisibility','Off','XGrid',true,'YGrid',true,'Pl"
+      "otMagPhase',false,'AxesColor',[0 0 0],'AxesTickColor',[0.686274509803922 0.686274509803922 0.686274509803922],'C"
+      "olorOrder',[1 1 0.0666666666666667;0.0745098039215686 0.623529411764706 1;1 0.411764705882353 0.16078431372549;0"
+      ".392156862745098 0.831372549019608 0.0745098039215686;0.717647058823529 0.274509803921569 1;0.0588235294117647 1"
+      " 1;1 0.0745098039215686 0.650980392156863],'Title','%<SignalLabel>','LinePropertiesCache',{{}},'UserDefinedChann"
+      "elNames',{{}},'NumLines',0,'LineNames',{{[]}},'ShowContent',true,'Placement',1)),extmgr.Configuration('Tools','P"
+      "lot Navigation',true,'OnceAtStop',false,'PreviousZoomMode','Pan','PreviousAutoscale','XY'),extmgr.Configuration("
+      "'Tools','Measurements',true,'Version','2017a','Measurements',struct('tcursors',struct('XCoordinates',[1125.375 2"
+      "375.125],'YCoordinates',[NaN NaN],'CursorChannels',[1 1],'WaveformCursors',true,'ShowHorizontal',false,'ShowVert"
+      "ical',true,'LockCursorSpacing',false,'SnapToData',false,'SettingsPanelOpen',0,'MeasurementsPanelOpen',1)))),'Ver"
+      "sion','2017a','Location',[1 76 1921 1039])"
       NumInputPorts	      "1"
     }
     Block {
@@ -1769,7 +1772,7 @@ Model {
       Ports		      [1]
       Position		      [440, 145, 500, 175]
       ZOrder		      2
-      VariableName	      "heading_005"
+      VariableName	      "heading_05"
       MaxDataPoints	      "inf"
       SaveFormat	      "Timeseries"
       Save2DSignal	      "3-D array (concatenate along third dimension)"

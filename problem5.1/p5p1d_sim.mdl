@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.26"
+    ComputedModelVersion    "1.27"
     NumModelReferences	    0
     NumTestPointedSignals   0
     NumProvidedFunctions    0
@@ -103,9 +103,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "thobern"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Tue Oct 23 11:02:54 2018"
-  RTWModifiedTimeStamp	  462192565
-  ModelVersionFormat	  "1.%<AutoIncrement:26>"
+  LastModifiedDate	  "Fri Nov 23 09:15:08 2018"
+  RTWModifiedTimeStamp	  464864860
+  ModelVersionFormat	  "1.%<AutoIncrement:27>"
   ConfigurationManager	  "none"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -212,7 +212,7 @@ Model {
 	  DisabledProps		  []
 	  Description		  ""
 	  StartTime		  "0.0"
-	  StopTime		  "500"
+	  StopTime		  "2000"
 	  AbsTol		  "auto"
 	  FixedStep		  "auto"
 	  InitialStep		  "auto"

@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.24"
+    ComputedModelVersion    "1.25"
     NumModelReferences	    0
     NumTestPointedSignals   0
     NumProvidedFunctions    0
@@ -103,9 +103,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "thobern"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Tue Oct 30 13:19:16 2018"
-  RTWModifiedTimeStamp	  462806354
-  ModelVersionFormat	  "1.%<AutoIncrement:24>"
+  LastModifiedDate	  "Fri Nov 23 08:10:20 2018"
+  RTWModifiedTimeStamp	  464861419
+  ModelVersionFormat	  "1.%<AutoIncrement:25>"
   ConfigurationManager	  "none"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -1250,7 +1250,7 @@ Model {
     ShowPageBoundaries	    off
     ZoomFactor		    "100"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "41"
+    SIDHighWatermark	    "44"
     Block {
       BlockType		      SubSystem
       Name		      "Cargo ship"
@@ -1811,17 +1811,6 @@ Model {
       Value		      "psi_r"
     }
     Block {
-      BlockType		      Gain
-      Name		      "Gain"
-      SID		      "33"
-      Position		      [280, 190, 325, 230]
-      ZOrder		      3
-      Gain		      "K_pd"
-      ParamDataTypeStr	      "Inherit: Inherit via internal rule"
-      OutDataTypeStr	      "Inherit: Inherit via internal rule"
-      SaturateOnIntegerOverflow	off
-    }
-    Block {
       BlockType		      Scope
       Name		      "HEading\n"
       SID		      "30"
@@ -1848,15 +1837,6 @@ Model {
       ")),extmgr.Configuration('Tools','Plot Navigation',true),extmgr.Configuration('Tools','Measurements',true,'Versio"
       "n','2017a')),'Version','2017a','Location',[1 76 1921 1039])"
       NumInputPorts	      "1"
-    }
-    Block {
-      BlockType		      TransferFcn
-      Name		      "H_pd"
-      SID		      "35"
-      Position		      [365, 191, 470, 229]
-      ZOrder		      5
-      Numerator		      "[T_d 1]"
-      Denominator	      "[T_f 1']"
     }
     Block {
       BlockType		      Reference
@@ -1906,6 +1886,91 @@ Model {
       ",'ShowContent',true,'Placement',1)),extmgr.Configuration('Tools','Plot Navigation',true),extmgr.Configuration('T"
       "ools','Measurements',true,'Version','2017a')),'Version','2017a','Location',[1 76 1921 1039])"
       NumInputPorts	      "1"
+    }
+    Block {
+      BlockType		      SubSystem
+      Name		      "Subsystem"
+      SID		      "42"
+      Ports		      [1, 1]
+      Position		      [305, 180, 395, 240]
+      ZOrder		      10
+      BackgroundColor	      "darkGreen"
+      RequestExecContextInheritance off
+      Variant		      off
+      System {
+	Name			"Subsystem"
+	Location		[953, 0, 1927, 1047]
+	Open			off
+	PortBlocksUseCompactNotation off
+	ModelBrowserVisibility	off
+	ModelBrowserWidth	200
+	ScreenColor		"white"
+	PaperOrientation	"landscape"
+	PaperPositionMode	"auto"
+	PaperType		"usletter"
+	PaperUnits		"inches"
+	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
+	TiledPageScale		1
+	ShowPageBoundaries	off
+	ZoomFactor		"100"
+	Block {
+	  BlockType		  Inport
+	  Name			  "e"
+	  SID			  "43"
+	  Position		  [20, 33, 50, 47]
+	  ZOrder		  6
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Gain
+	  Name			  "Gain"
+	  SID			  "33"
+	  Position		  [85, 20, 130, 60]
+	  ZOrder		  3
+	  Gain			  "K_pd"
+	  ParamDataTypeStr	  "Inherit: Inherit via internal rule"
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  TransferFcn
+	  Name			  "H_pd"
+	  SID			  "35"
+	  Position		  [170, 21, 275, 59]
+	  ZOrder		  5
+	  Numerator		  "[T_d 1]"
+	  Denominator		  "[T_f 1']"
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "u\n"
+	  SID			  "44"
+	  Position		  [307, 33, 337, 47]
+	  ZOrder		  7
+	  IconDisplay		  "Port number"
+	}
+	Line {
+	  ZOrder		  13
+	  SrcBlock		  "H_pd"
+	  SrcPort		  1
+	  DstBlock		  "u\n"
+	  DstPort		  1
+	}
+	Line {
+	  ZOrder		  12
+	  SrcBlock		  "e"
+	  SrcPort		  1
+	  DstBlock		  "Gain"
+	  DstPort		  1
+	}
+	Line {
+	  ZOrder		  10
+	  SrcBlock		  "Gain"
+	  SrcPort		  1
+	  DstBlock		  "H_pd"
+	  DstPort		  1
+	}
+      }
     }
     Block {
       BlockType		      Sum
@@ -1993,24 +2058,17 @@ Model {
       }
     }
     Line {
-      ZOrder		      9
-      SrcBlock		      "Sum"
+      ZOrder		      20
+      SrcBlock		      "Constant"
       SrcPort		      1
-      DstBlock		      "Gain"
+      DstBlock		      "Sum"
       DstPort		      1
     }
     Line {
-      ZOrder		      10
-      SrcBlock		      "Gain"
+      ZOrder		      30
+      SrcBlock		      "Subsystem"
       SrcPort		      1
-      DstBlock		      "H_pd"
-      DstPort		      1
-    }
-    Line {
-      ZOrder		      11
-      SrcBlock		      "H_pd"
-      SrcPort		      1
-      Points		      [12, 0]
+      Points		      [87, 0]
       Branch {
 	ZOrder			24
 	Points			[33, 0]
@@ -2033,10 +2091,10 @@ Model {
       }
     }
     Line {
-      ZOrder		      20
-      SrcBlock		      "Constant"
+      ZOrder		      29
+      SrcBlock		      "Sum"
       SrcPort		      1
-      DstBlock		      "Sum"
+      DstBlock		      "Subsystem"
       DstPort		      1
     }
   }

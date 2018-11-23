@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.26"
+    ComputedModelVersion    "1.27"
     NumModelReferences	    0
     NumTestPointedSignals   0
     NumProvidedFunctions    0
@@ -103,9 +103,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "thobern"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Thu Nov 22 18:08:26 2018"
-  RTWModifiedTimeStamp	  464810885
-  ModelVersionFormat	  "1.%<AutoIncrement:26>"
+  LastModifiedDate	  "Fri Nov 23 07:44:28 2018"
+  RTWModifiedTimeStamp	  464859867
+  ModelVersionFormat	  "1.%<AutoIncrement:27>"
   ConfigurationManager	  "none"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -1252,6 +1252,17 @@ Model {
     ReportName		    "simulink-default.rpt"
     SIDHighWatermark	    "45"
     Block {
+      BlockType		      Saturate
+      Name		      "+-45"
+      SID		      "45"
+      Ports		      [1, 1]
+      Position		      [395, 195, 425, 225]
+      ZOrder		      11
+      InputPortMap	      "u0"
+      UpperLimit	      "45"
+      LowerLimit	      "-45"
+    }
+    Block {
       BlockType		      SubSystem
       Name		      "Cargo ship"
       SID		      "1"
@@ -1972,17 +1983,6 @@ Model {
       NumInputPorts	      "1"
     }
     Block {
-      BlockType		      Saturate
-      Name		      "Saturation"
-      SID		      "45"
-      Ports		      [1, 1]
-      Position		      [395, 195, 425, 225]
-      ZOrder		      11
-      InputPortMap	      "u0"
-      UpperLimit	      "45"
-      LowerLimit	      "-45"
-    }
-    Block {
       BlockType		      Sum
       Name		      "Sum"
       SID		      "32"
@@ -2078,7 +2078,7 @@ Model {
       ZOrder		      35
       SrcBlock		      "PD controller"
       SrcPort		      1
-      DstBlock		      "Saturation"
+      DstBlock		      "+-45"
       DstPort		      1
     }
     Line {
@@ -2090,7 +2090,7 @@ Model {
     }
     Line {
       ZOrder		      39
-      SrcBlock		      "Saturation"
+      SrcBlock		      "+-45"
       SrcPort		      1
       Points		      [15, 0]
       Branch {

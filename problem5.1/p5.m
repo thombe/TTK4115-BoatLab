@@ -4,7 +4,6 @@ w0 = 1;
 lambda = 1;
 K = 1;
 T = 5;
-%syms w0 lambda T K Kw;
 
 
 

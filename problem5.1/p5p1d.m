@@ -1,12 +1,3 @@
-
-%constants
-w0 = 1;
-lambda = 1;
-%K = 1;
-%T = 5;
-Kw = 1;
-%syms w0 lambda T K Kw;
-
 H1 = 58.71/2;
 H2 = 1.676/2;
 w1 = 0.005; %rad/s
@@ -39,20 +30,25 @@ C = [0 1 0 0 0;
 D = [0;
     0];
 
-
-
-
 sys = ss(A,B,C,D);
 
-h = tf(sys);
-
-%[u,t] = gensig('sine',10,10,0.01);
-%lsim(h,u,t);
-
-%figure(1)
-%stepplot(sys);
 figure(2)
-[y,t] = (step(sys,500));
-plot(heading_step , t ,y(:,2) ,'--');
-%plot(t,y);
+[y,t] = (step(sys,2000));
+plot(heading_step , t ,y(:,2) ,'--','LineWidth',1.2);
+
+grid on;
+
+title('Step plot');
+legend('$\psi$','$\psi_{model}$') % Up rigth corner legends
+handles(1) = xlabel('Time'); % xLabel
+handles(2) = ylabel('Compass course'); %yLabel
+set(legend, 'Interpreter' , 'Latex');
+set(legend, 'FontSize' , 14);
+set(handles, 'Interpreter' , 'Latex'); % Making them in latex
+set(handles, 'Fontsize' , 14); % Fontsize
+
+
+set(gcf, 'PaperPositionMode', 'auto');
+print -depsc2 P5p1dheading.eps %Sets the filename for export
+%close;
 
