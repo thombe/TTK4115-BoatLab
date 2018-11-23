@@ -49,8 +49,9 @@ Cd = C;
 Dd = D;
 
 sim('ship');
-variance = var(mn*pi/180);
+variance = var(mn);%.*pi/180);
 R = variance/T_s;
+R = 0.020;
 
 Q = [30 0;
     0 10^-6];
