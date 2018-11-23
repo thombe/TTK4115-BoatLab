@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.88"
+    ComputedModelVersion    "1.89"
     NumModelReferences	    0
     NumTestPointedSignals   0
     NumProvidedFunctions    0
@@ -66,11 +66,11 @@ Model {
 	Object {
 	  $ObjectID		  5
 	  IsActive		  [1]
-	  ViewObjType		  "SimulinkSubsys"
-	  LoadSaveID		  "69"
+	  ViewObjType		  "SimulinkTopLevel"
+	  LoadSaveID		  "0"
 	  Extents		  [920.0, 863.0]
-	  ZoomFactor		  [1.31]
-	  Offset		  [5.6843418860808015e-14, 0.0]
+	  ZoomFactor		  [1.2649398417938889]
+	  Offset		  [-149.50951889023912, 3.87705822589686]
 	}
 	Object {
 	  $ObjectID		  6
@@ -115,9 +115,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "thobern"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Fri Nov 23 11:09:59 2018"
-  RTWModifiedTimeStamp	  464874225
-  ModelVersionFormat	  "1.%<AutoIncrement:88>"
+  LastModifiedDate	  "Fri Nov 23 11:57:25 2018"
+  RTWModifiedTimeStamp	  464875203
+  ModelVersionFormat	  "1.%<AutoIncrement:89>"
   ConfigurationManager	  "none"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -1164,7 +1164,7 @@ Model {
   System {
     Name		    "p5p5e_sim"
     Location		    [875, 14, 1849, 1061]
-    Open		    off
+    Open		    on
     PortBlocksUseCompactNotation off
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
@@ -1793,7 +1793,7 @@ Model {
       System {
 	Name			"Kalman filter"
 	Location		[875, 14, 1849, 1061]
-	Open			on
+	Open			off
 	PortBlocksUseCompactNotation off
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
@@ -2300,9 +2300,19 @@ Model {
       Points		      [8, 0]
       Branch {
 	ZOrder			270
-	Points			[0, -40]
-	DstBlock		"To Workspace"
-	DstPort			1
+	Points			[0, -25]
+	Branch {
+	  ZOrder		  290
+	  Points		  [1, 0; 0, 111; -489, 0]
+	  DstBlock		  "Sum"
+	  DstPort		  2
+	}
+	Branch {
+	  ZOrder		  289
+	  Points		  [0, -15]
+	  DstBlock		  "To Workspace"
+	  DstPort		  1
+	}
       }
       Branch {
 	ZOrder			269
@@ -2366,17 +2376,8 @@ Model {
       }
       Branch {
 	ZOrder			229
-	Points			[-131, 0]
-	Branch {
-	  ZOrder		  283
-	  DstBlock		  "Sum"
-	  DstPort		  2
-	}
-	Branch {
-	  ZOrder		  282
-	  DstBlock		  "To Workspace1"
-	  DstPort		  1
-	}
+	DstBlock		"To Workspace1"
+	DstPort			1
       }
     }
     Line {

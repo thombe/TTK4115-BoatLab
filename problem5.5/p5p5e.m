@@ -15,8 +15,8 @@ lambda = 0.09; % Trial and error
 Kw = 2*lambda*w0*sigma;
 
 T_d = T; 
-K_pd = 0.841;   %0.841;
-T_f = 8.35;     %8.35
+K_pd = 0.839;
+T_f = 8.4;
 
 
 
