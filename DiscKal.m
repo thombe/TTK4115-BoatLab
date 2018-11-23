@@ -41,7 +41,8 @@ function [sys,x0,str,ts]=mdlInitializeSizes(data)
     sys = simsizes(sizes);
 
     x0  = data.x_0;
-
+    
+    
     str = [];
 
     ts  = [-1 0]; % Sample time.

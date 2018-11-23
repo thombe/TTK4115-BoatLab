@@ -15,8 +15,8 @@ lambda = 0.09; % Trial and error
 Kw = 2*lambda*w0*sigma;
 
 T_d = T; 
-K_pd = 0.839;
-T_f = 8.4;
+K_pd = 0.839; %0.839
+T_f = 08.4;     %8.4
 
 
 
@@ -49,9 +49,9 @@ Cd = C;
 Dd = D;
 
 sim('ship');
-variance = var(mn);%.*pi/180);
+variance = var(mn*pi/180);
 R = variance/T_s;
-R = 0.020;
+%R = 0.020;
 
 Q = [30 0;
     0 10^-6];

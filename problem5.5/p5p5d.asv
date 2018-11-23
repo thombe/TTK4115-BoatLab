@@ -64,7 +64,7 @@ P_0 = [1    0      0    0   0;
 x_0 = [zeros(10,1);P_0(:)];
 I = eye(5);
        
-psi_r = 30;
+
 data = struct('Ad',Ad,'Bd',Bd,'Cd',Cd,'Ed', Ed, 'Q',Q,'R', R,'P_0',P_0,'x_0',x_0, 'I', I);
           
 figure(1)
