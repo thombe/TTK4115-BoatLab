@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.58"
+    ComputedModelVersion    "1.59"
     NumModelReferences	    0
     NumTestPointedSignals   0
     NumProvidedFunctions    0
@@ -43,7 +43,7 @@ Model {
       $ObjectID		      2
       $ClassName	      "Simulink.WindowInfo"
       IsActive		      [1]
-      Location		      [951.0, 2.0, 974.0, 1047.0]
+      Location		      [953.0, 0.0, 974.0, 1047.0]
       Object {
 	$PropName		"ModelBrowserInfo"
 	$ObjectID		3
@@ -115,9 +115,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "thobern"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Tue Nov 13 14:39:28 2018"
-  RTWModifiedTimeStamp	  464020765
-  ModelVersionFormat	  "1.%<AutoIncrement:58>"
+  LastModifiedDate	  "Fri Nov 23 15:03:15 2018"
+  RTWModifiedTimeStamp	  464882445
+  ModelVersionFormat	  "1.%<AutoIncrement:59>"
   ConfigurationManager	  "none"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -1138,6 +1138,17 @@ Model {
       SampleTime	      "-1"
     }
     Block {
+      BlockType		      ToWorkspace
+      VariableName	      "simulink_output"
+      MaxDataPoints	      "1000"
+      Decimation	      "1"
+      SaveFormat	      "Array"
+      Save2DSignal	      "Inherit from input (this choice will be removed - see release notes)"
+      FixptAsFi		      off
+      NumInputs		      "1"
+      SampleTime	      "0"
+    }
+    Block {
       BlockType		      TransferFcn
       Numerator		      "[1]"
       Denominator	      "[1 2 1]"
@@ -1152,7 +1163,7 @@ Model {
   }
   System {
     Name		    "p5p5d_sim"
-    Location		    [951, 2, 1925, 1049]
+    Location		    [953, 0, 1927, 1047]
     Open		    on
     PortBlocksUseCompactNotation off
     ModelBrowserVisibility  off
@@ -1167,7 +1178,7 @@ Model {
     ShowPageBoundaries	    off
     ZoomFactor		    "126"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "73"
+    SIDHighWatermark	    "76"
     Block {
       BlockType		      Saturate
       Name		      "+-35deg"
@@ -1764,7 +1775,8 @@ Model {
       " 1;1 0.411764705882353 0.16078431372549;1 1 0.0666666666666667;0.717647058823529 0.274509803921569 1;0.392156862"
       "745098 0.831372549019608 0.0745098039215686;0.0588235294117647 1 1;1 0.0745098039215686 0.650980392156863])),ext"
       "mgr.Configuration('Tools','Plot Navigation',true,'OnceAtStop',false,'PreviousAutoscale','XY'),extmgr.Configurati"
-      "on('Tools','Measurements',true,'Version','2017a')),'Version','2017a','Position',[1 41 1920 963])"
+      "on('Tools','Measurements',true,'Version','2017a')),'Version','2017a','Position',[1 41 1920 963],'VisibleAtModelO"
+      "pen','on')"
       NumInputPorts	      "2"
     }
     Block {
@@ -2189,6 +2201,50 @@ Model {
       OutDataTypeStr	      "Inherit: Inherit via internal rule"
       SaturateOnIntegerOverflow	off
     }
+    Block {
+      BlockType		      ToWorkspace
+      Name		      "To Workspace"
+      SID		      "74"
+      Ports		      [1]
+      Position		      [65, 565, 125, 595]
+      ZOrder		      37
+      VariableName	      "heading"
+      MaxDataPoints	      "inf"
+      SaveFormat	      "Timeseries"
+      Save2DSignal	      "3-D array (concatenate along third dimension)"
+      FixptAsFi		      on
+      SampleTime	      "-1"
+    }
+    Block {
+      BlockType		      ToWorkspace
+      Name		      "To Workspace1"
+      SID		      "75"
+      Ports		      [1]
+      Position		      [205, 100, 265, 130]
+      ZOrder		      38
+      VariableName	      "rudder"
+      MaxDataPoints	      "inf"
+      SaveFormat	      "Timeseries"
+      Save2DSignal	      "3-D array (concatenate along third dimension)"
+      FixptAsFi		      on
+      SampleTime	      "-1"
+    }
+    Block {
+      BlockType		      ToWorkspace
+      Name		      "To Workspace2"
+      SID		      "76"
+      Ports		      [1]
+      Position		      [-15, 305, 45, 335]
+      ZOrder		      39
+      BlockMirror	      on
+      NamePlacement	      "alternate"
+      VariableName	      "bias"
+      MaxDataPoints	      "inf"
+      SaveFormat	      "Timeseries"
+      Save2DSignal	      "3-D array (concatenate along third dimension)"
+      FixptAsFi		      on
+      SampleTime	      "-1"
+    }
     Line {
       ZOrder		      1
       SrcBlock		      "Cargo ship"
@@ -2228,16 +2284,10 @@ Model {
       ZOrder		      13
       SrcBlock		      "Cargo ship"
       SrcPort		      1
-      Points		      [9, 0; 0, 195; -61, 0]
+      Points		      [9, 0; 0, 195]
       Branch {
-	ZOrder			248
-	Points			[0, 127; -433, 0]
-	DstBlock		"Sum"
-	DstPort			2
-      }
-      Branch {
-	ZOrder			247
-	Points			[-46, 0]
+	ZOrder			258
+	Points			[-107, 0]
 	Branch {
 	  ZOrder		  234
 	  DstBlock		  "Kalman filter"
@@ -2247,6 +2297,22 @@ Model {
 	  ZOrder		  232
 	  Points		  [0, 34; -122, 0]
 	  DstBlock		  "Heading Comparison"
+	  DstPort		  2
+	}
+      }
+      Branch {
+	ZOrder			248
+	Points			[0, 127; -409, 0]
+	Branch {
+	  ZOrder		  260
+	  Points		  [0, 68]
+	  DstBlock		  "To Workspace"
+	  DstPort		  1
+	}
+	Branch {
+	  ZOrder		  259
+	  Points		  [-85, 0]
+	  DstBlock		  "Sum"
 	  DstPort		  2
 	}
       }
@@ -2262,17 +2328,27 @@ Model {
       ZOrder		      207
       SrcBlock		      "+-35deg"
       SrcPort		      1
-      Points		      [85, 0]
+      Points		      [22, 0]
       Branch {
-	ZOrder			213
-	Points			[0, 120]
-	DstBlock		"Kalman filter"
+	ZOrder			262
+	Points			[0, -41; -61, 0; 0, -54]
+	DstBlock		"To Workspace1"
 	DstPort			1
       }
       Branch {
-	ZOrder			208
-	DstBlock		"Cargo ship"
-	DstPort			1
+	ZOrder			261
+	Points			[63, 0]
+	Branch {
+	  ZOrder		  213
+	  Points		  [0, 120]
+	  DstBlock		  "Kalman filter"
+	  DstPort		  1
+	}
+	Branch {
+	  ZOrder		  208
+	  DstBlock		  "Cargo ship"
+	  DstPort		  1
+	}
       }
     }
     Line {
@@ -2287,9 +2363,17 @@ Model {
       ZOrder		      249
       SrcBlock		      "Kalman filter"
       SrcPort		      1
-      Points		      [-10, 0]
-      DstBlock		      "Sum1"
-      DstPort		      2
+      Points		      [-10, 0; 0, -10]
+      Branch {
+	ZOrder			264
+	DstBlock		"To Workspace2"
+	DstPort			1
+      }
+      Branch {
+	ZOrder			263
+	DstBlock		"Sum1"
+	DstPort			2
+      }
     }
   }
 }
