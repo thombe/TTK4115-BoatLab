@@ -33,7 +33,7 @@ function [sys,x0,str,ts]=mdlInitializeSizes(data)
 
     sizes.NumContStates  = 0;
     sizes.NumDiscStates  = 35;
-    sizes.NumOutputs     = 2;
+    sizes.NumOutputs     = 3;
     sizes.NumInputs      = 2;
     sizes.DirFeedthrough = 0;                             
     sizes.NumSampleTimes = 1;
@@ -73,7 +73,7 @@ function x=mdlUpdate(t,x,u,data)
 end
 
 function sys=mdlOutputs(t,x,u, data)
-    sys=[x(8); x(10)]; % psi, b
+    sys=[x(8); x(10); x(7)]; % psi, b , psi_w
 end
 
 function sys=mdlTerminate(t,x,u) 
