@@ -105,18 +105,18 @@ sim('p5p5e_sim');
  figure(1)
 
 
-plot(waves.Time,waves.Data,'LineWidth',1.0);
+plot(wave.Time,wave.Data,'LineWidth',1.2);
 grid on;
 
 title('Wave disturbance');
-legend('$\psi_w$','$\hat{\psi_w}$') % Up rigth corner legends
+legend('$\p$','$\hat{b}$') % Up rigth corner legends
 handles(1) = xlabel('Time'); % xLabel
-handles(2) = ylabel('Wave disturbance'); %yLabel
+handles(2) = ylabel('Rudder input'); %yLabel
 set(legend, 'Interpreter' , 'Latex');
 set(legend, 'FontSize' , 14);
 set(handles, 'Interpreter' , 'Latex'); % Making them in latex
 set(handles, 'Fontsize' , 14); % Fontsize
-axis([0 800 -10 10]);
+axis([0 500 -50 50]);
 
 set(gcf, 'PaperPositionMode', 'auto');
-print -depsc2 P5p5e_waves.eps %Sets the filename for export
+print -depsc2 P5p5e_rudder_heading.eps %Sets the filename for export
